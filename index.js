@@ -48,11 +48,28 @@ async function run() {
   try {
     await client.connect();
 
+    // product
     const bikesProductDB = client.db("bikesProductDB");
     const bikesCollection = bikesProductDB.collection("bikesCollection");
 
+    // categories
+    const categoriesProductDB = client.db("categoriesProductDB");
+    const categoriesCollection = categoriesProductDB.collection(
+      "categoriesCollection"
+    );
+
+    // user
     const userDB = client.db("userDB");
     const userCollection = userDB.collection("userCollection");
+
+    ////////////////////// Categories Collection //////////////////////
+
+    app.get("/categories", async (req, res) => {
+      const categoryData = categoriesCollection.find();
+      const result = await categoryData.toArray();
+
+      res.send(result);
+    });
 
     ////////////////////// Product Collection //////////////////////
 

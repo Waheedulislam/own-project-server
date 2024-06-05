@@ -116,7 +116,7 @@ async function run() {
     ////////////////////// User Collection //////////////////////
 
     // user post database
-    app.post("/user", verifyToken, async (req, res) => {
+    app.post("/user", async (req, res) => {
       const user = req.body;
 
       const token = createToken(user);

@@ -9,7 +9,7 @@ const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 app.use(cors());
 app.use(express.json());
 
-// crate Token
+// crate Tokens
 function createToken(user) {
   const token = jwt.sign(
     {
